@@ -1,0 +1,16 @@
+[
+{
+  "modid": "luckofthestraw",
+  "name": "Luck of the Straw",
+  "description": "Registers every item in the creative menu as seeds",
+  "version": "${version}",
+  "mcversion": "${mcversion}",
+  "url": "",
+  "updateUrl": "",
+  "authorList": ["AtomicBlom"],
+  "credits": "oitsjustjose for the name",
+  "logoFile": "",
+  "screenshots": [],
+  "dependencies": []
+}
+]
