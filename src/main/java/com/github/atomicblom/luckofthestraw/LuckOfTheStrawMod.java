@@ -1,37 +1,36 @@
 package com.github.atomicblom.luckofthestraw;
 
-import net.minecraft.creativetab.CreativeTabs;
+import net.minecraft.block.GrassBlock;
+import net.minecraft.block.material.Material;
 import net.minecraft.item.Item;
+import net.minecraft.item.ItemGroup;
 import net.minecraft.item.ItemStack;
+import net.minecraft.loot.*;
+import net.minecraft.loot.conditions.ILootCondition;
+import net.minecraft.util.IItemProvider;
 import net.minecraft.util.NonNullList;
+import net.minecraft.util.ResourceLocation;
+import net.minecraftforge.common.ForgeHooks;
 import net.minecraftforge.common.MinecraftForge;
+import net.minecraftforge.common.loot.GlobalLootModifierSerializer;
+import net.minecraftforge.common.loot.LootModifierManager;
+import net.minecraftforge.event.LootTableLoadEvent;
+import net.minecraftforge.event.RegistryEvent;
+import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
-import net.minecraftforge.fml.common.Mod.EventHandler;
-import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
-import net.minecraftforge.fml.common.registry.ForgeRegistries;
+import net.minecraftforge.fml.common.Mod.EventBusSubscriber;
+import net.minecraftforge.fml.event.lifecycle.InterModProcessEvent;
+import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
+import net.minecraftforge.registries.ForgeRegistries;
 
-@Mod(modid = LuckOfTheStrawMod.MODID, name = LuckOfTheStrawMod.NAME, version = LuckOfTheStrawMod.VERSION, dependencies = "before:crafttweaker", acceptedMinecraftVersions = "[1.12, 1.13)")
+import static net.minecraftforge.versions.forge.ForgeVersion.MOD_ID;
+
+@Mod("luckofthestraw")
 public class LuckOfTheStrawMod
 {
+    //guide https://forums.minecraftforge.net/topic/96325-1164-loot-table-minecraftblocksgrass-not-loaded/
     static final String MODID = "luckofthestraw";
     static final String NAME = "Luck of the Straw";
     public static final String VERSION = "@MOD_VERSION@";
 
-    @EventHandler
-    public void postInit(FMLPostInitializationEvent event) {
-        final NonNullList<ItemStack> allItems = NonNullList.create();
-
-        for (final Item item : ForgeRegistries.ITEMS)
-        {
-            for (final CreativeTabs creativeTabs : CreativeTabs.CREATIVE_TAB_ARRAY)
-            {
-                item.getSubItems(creativeTabs, allItems);
-            }
-        }
-
-        for (final ItemStack itemStack : allItems)
-        {
-            MinecraftForge.addGrassSeed(itemStack, 1);
-        }
-    }
 }
