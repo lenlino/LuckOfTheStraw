@@ -27,11 +27,25 @@ public class GrassLootModifier extends LootModifier {
         super(conditionsIn);
         this.enableLootModifier = enableLootModifier;
         this.dropProbability = dropProbability;
+        System.out.println(OptionsHolder.COMMON.List1.get().toString());
         for (final Item item : ForgeRegistries.ITEMS) {
+            if (inBlackList(item.getRegistryName().toString())) {
+                System.out.println("block");
+                continue;
+            }
             for (final ItemGroup creativeTabs : ItemGroup.TABS) {
                 item.fillItemCategory(creativeTabs, allItems);
             }
         }
+    }
+
+    public boolean inBlackList(String itemName) {
+        for (String blackName : OptionsHolder.COMMON.List1.get()) {
+            if (itemName.startsWith(blackName)) {
+                return true;
+            }
+        }
+        return false;
     }
 
     @Nonnull

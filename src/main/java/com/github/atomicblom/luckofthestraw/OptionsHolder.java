@@ -4,6 +4,10 @@ import net.minecraftforge.common.ForgeConfigSpec;
 import net.minecraftforge.common.ForgeConfigSpec.ConfigValue;
 import org.apache.commons.lang3.tuple.Pair;
 
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+
 public class OptionsHolder
     //https://forums.minecraftforge.net/topic/100140-1165-implementing-forge-config-file-solved/
 {
@@ -11,9 +15,11 @@ public class OptionsHolder
     {
         private static final int defaultInt1 = 37;
         private static final boolean defaultBool1 = true;
+        private static final List<String> defaultList1 = new ArrayList<>();
 
         public final ConfigValue<Integer> Int1;
         public final ConfigValue<Boolean> Bool1;
+        public final ConfigValue<List<String>> List1;
 
 
         public Common(ForgeConfigSpec.Builder builder)
@@ -24,6 +30,8 @@ public class OptionsHolder
                     .defineInRange("Short but readable name", defaultInt1, 1, 60);
             this.Bool1 = builder.comment("asdasd as asd asd asd asdas aasd as asd asd. asd as asd asd. asdasdad asd.")
                     .define("Short but readable name 2", defaultBool1);
+            this.List1 = builder.comment("blacklist")
+                            .define("blacklist", defaultList1);
             builder.pop();
         }
     }
