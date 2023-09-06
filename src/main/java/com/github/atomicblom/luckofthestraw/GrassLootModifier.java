@@ -28,9 +28,7 @@ public class GrassLootModifier extends LootModifier {
         this.enableLootModifier = enableLootModifier;
         this.dropProbability = dropProbability;
         for (final Item item : ForgeRegistries.ITEMS) {
-            System.out.println(item.getRegistryName());
             for (final ItemGroup creativeTabs : ItemGroup.TABS) {
-                System.out.println("group:"+creativeTabs.getId());
                 item.fillItemCategory(creativeTabs, allItems);
             }
         }
